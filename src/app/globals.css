@@ -31,6 +31,8 @@ html,body{
 
   --color-primary: var(--primary);
 
+  --color-theme: var(--theme);
+
   --color-primary-foreground: var(--primary-foreground);
 
   --color-secondary: var(--secondary);
@@ -145,6 +147,8 @@ html,body{
   --sidebar-border: oklch(0.922 0 0);
 
   --sidebar-ring: oklch(0.708 0 0);
+
+  --theme: #611f69;
 }
 
 .dark {
@@ -210,6 +214,8 @@ html,body{
   --sidebar-border: oklch(1 0 0 / 10%);
 
   --sidebar-ring: oklch(0.556 0 0);
+
+  --theme: #611f69;
 }
 
 @layer base {
