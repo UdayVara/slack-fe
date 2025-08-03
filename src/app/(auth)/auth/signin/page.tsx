@@ -9,6 +9,7 @@ import Link from 'next/link'
 import React from 'react'
 import { FaGithub } from 'react-icons/fa6'
 import { FcGoogle } from 'react-icons/fc'
+import ButtonActions from './_components/ButtonActions'
 
 
 export const metadata: Metadata = {
@@ -35,10 +36,7 @@ function page() {
                   <DropdownMenuSeparator  className='border grow border-gray-300 mt-2'/> <span className="uppercase">or sign in with</span> <DropdownMenuSeparator  className='border border-gray-300 grow'/>
                 </div>
 
-                <div className="mt-3 flex flex-row gap-3 items-center w-full">
-                    <Button className='bg-transparent py-5 border-2 border-theme text-md text-black rounded-lg grow'>Google <FcGoogle /></Button>
-                    <Button className='bg-transparent py-5 border-2 border-theme text-md text-black rounded-lg grow'>Github <FaGithub /></Button>
-                </div>
+              <ButtonActions />
                 <h5 className='mt-4'>Having Trouble? <Link href={"/"} className='text-blue-600'>Try entering workspace URL</Link></h5>
                 
 
