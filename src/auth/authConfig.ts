@@ -1,4 +1,5 @@
 import { NextAuthConfig } from "next-auth";
+import Credentials from "next-auth/providers/credentials";
 import GitHub from "next-auth/providers/github";
 import Google from "next-auth/providers/google";
 
@@ -9,7 +10,7 @@ export const nextAuthConfig: NextAuthConfig= {
         GitHub({
             clientId:process.env.AUTH_GITHUB_ID,
             clientSecret:process.env.AUTH_GITHUB_SECRET
-        })
+        }),
     ],
     callbacks:{
         signIn:({profile,account})=>{
@@ -20,7 +21,20 @@ export const nextAuthConfig: NextAuthConfig= {
                 console.log("Google Login Deteced",profile)
             }
             return true;
-        }
+        },
+        jwt(params) {
+            if(params.user){
+                params.token.user = params.user
+            }
+            return params.token
+        },
+        session(params : any) {
+            if(params.token?.user){
+                params.session.user = params.token?.user
+            }
+            return params.session
+        },
+
     },
     pages:{
         signIn:"/auth/signin"

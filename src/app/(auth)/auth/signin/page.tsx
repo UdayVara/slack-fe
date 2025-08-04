@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 function page() {
   return (
     <>
-        <div className='flex flex-col items-center mt-20 h-full w-full mx-auto max-w-md'>
+        <div className='flex flex-col items-center pt-20 h-full w-full mx-auto max-w-md'>
           <DockedSignupLabel />
                 <Image className='w-[150px] h-auto gap-2 mx-auto' height={1000} width={1000} src={"/slack-logo-full.png"}  alt='logo'  />
 
