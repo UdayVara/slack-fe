@@ -7,7 +7,7 @@ export function middleware(request: NextRequest) {
     if(url == "/auth/verify"){
         const isOtpGenerate = request.cookies.get("isOtpGenerated") || null
         if(!isOtpGenerate || isOtpGenerate.value != "true"){
-            return NextResponse.redirect(new URL("/",request.url))
+            return NextResponse.redirect(new URL("/auth/signin",request.url))
         }
     }
 }
