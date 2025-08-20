@@ -1,3 +1,5 @@
+import client from "@/lib/graphqlClient";
+import { VERIFY_OTP_QUERY } from "@/query/auth.query";
 import { NextAuthConfig } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import GitHub from "next-auth/providers/github";
@@ -11,6 +13,38 @@ export const nextAuthConfig: NextAuthConfig= {
             clientId:process.env.AUTH_GITHUB_ID,
             clientSecret:process.env.AUTH_GITHUB_SECRET
         }),
+        Credentials({
+            name:"Credentials",
+            async authorize(credentials){
+                try {
+                    const res = await client.mutate({
+                        mutation: VERIFY_OTP_QUERY,
+                        variables: {
+                            verifyOtpVerifyData2: {
+                                otp: credentials.otp,
+                                email: credentials.email,
+                            },
+                        },
+                    });
+                    console.log("res",res)
+                    if(res.data?.verifyOtp?.statusCode == 201){
+                        return {
+                            id:res.data?.verifyOtp?.user?.id,
+                            email:res.data?.verifyOtp?.user?.email,
+                            username:res.data?.verifyOtp?.user?.username,
+                            verified:res.data?.verifyOtp?.user?.verified,
+                            platform:res.data?.verifyOtp?.user?.platform,
+                            token:res.data?.verifyOtp?.token,
+                            image:res.data?.verifyOtp?.user?.image,
+                        }
+                    }else{
+                        throw new Error(res.data?.verifyOtp?.message || "Internal Server Error")
+                    }
+                } catch (error:any) {
+                    throw new Error(error?.message || "Internal Server Error")
+                }
+            }
+        })
     ],
     callbacks:{
         signIn:({profile,account})=>{

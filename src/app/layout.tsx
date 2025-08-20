@@ -3,6 +3,7 @@ import { Lato } from "next/font/google";
 import "./globals.css";
 import NextAuthProvider from "@/providers/NextAuthProvider";
 import { auth } from "@/auth/auth";
+import { Toaster } from "@/components/ui/sonner";
 
 const lato = Lato({
   subsets: ["latin"],
@@ -31,6 +32,7 @@ export default async function RootLayout({
         <NextAuthProvider session={session}>
         {children}
         </NextAuthProvider>
+        <Toaster position="top-right"/>
       </body>
     </html>
   );
