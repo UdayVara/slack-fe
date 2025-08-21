@@ -1,13 +1,26 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { auth } from "./auth/auth";
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
     const url = request.nextUrl.pathname
-    
+    const publicRoutes = ["/auth/signin","/auth/signup","/auth/verify"]
+    const user = await auth()
     if(url == "/auth/verify"){
       const isOtpGenerate = request.cookies.get("isOtpGenerated") || null
         if(!isOtpGenerate || isOtpGenerate.value != "true"){
-            // return NextResponse.redirect(new URL("/auth/signin",request.url))
+            return NextResponse.redirect(new URL("/auth/signin",request.url))
+        }
+    }
+
+    if(!user){
+        if(!publicRoutes.includes(url)){
+            return NextResponse.redirect(new URL("/auth/signin",request.url))
+        }
+    }
+    if(user){
+        if(publicRoutes.includes(url)){
+            return NextResponse.redirect(new URL("/home",request.url))
         }
     }
 }
