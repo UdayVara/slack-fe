@@ -1,60 +1,56 @@
 "use server";
 
-import { signIn } from "@/auth/auth";
-import client from "@/lib/graphqlClient";
-import { SIGNUP_USER_QUERY, VERIFY_OTP_QUERY } from "@/query/auth.query";
-import { PlatformType } from "@/types/Models/user.model";
+import api from "@/lib/axios";
 import { cookies } from "next/headers";
 
-type handleSignupArgs = {
+type HandleSignupArgs = {
   username: string;
   email: string;
 };
 
-type handleVerifyOtpArgs = {
-    otp:string,
-    email:string
-}
-export const handleSignup = async (body: handleSignupArgs) => {
+type HandleVerifyOtpArgs = {
+  otp: string;
+  email: string;
+};
+
+export const handleSignup = async (body: HandleSignupArgs) => {
   try {
-    const res = await client.mutate({
-      mutation: SIGNUP_USER_QUERY,
-      variables: {
-        signupdata: {
-          email: body.email,
-          platform: PlatformType.default,
-          username: body.username,
-        },
-      },
+    const res = await api.post("/auth/signup", {
+      username: body.username,
+      email: body.email,
+      platform: "default", // same as PlatformType.default
     });
 
-    console.log("signup data -----------------------",res?.data)
-    if(res.data?.signupUser?.statusCode == 201){
-      const cookiesUtil = await cookies()
+    if (res.data?.statusCode === 201) {
+      const cookiesUtil = await cookies();
+
       cookiesUtil.set({
         name: "isOtpGenerated",
         value: "true",
-        expires: new Date(Date.now() + 5 * 60 * 1000), 
+        expires: new Date(Date.now() + 5 * 60 * 1000),
         path: "/",
-        httpOnly: true, 
+        httpOnly: true,
         sameSite: "lax",
       });
 
       cookiesUtil.set({
         name: "useremail",
-        value: res.data?.signupUser?.email,
-        expires: new Date(Date.now() + 5 * 60 * 1000), 
+        value: res.data?.email,
+        expires: new Date(Date.now() + 5 * 60 * 1000),
         path: "/",
-        httpOnly: false, 
+        httpOnly: false,
         sameSite: "lax",
-      })
-        return { success: true, message: "OTP Sent Successfully" };
-    }else{
-        return {success:false,message:res?.data?.signupUser?.message || "Failed to Signup"}
+      });
+
+      return { success: true, message: "OTP Sent Successfully" };
+    } else {
+      return {
+        success: false,
+        message: res.data?.message || "Failed to Signup",
+      };
     }
-    
   } catch (error: any) {
-    console.log("errror",error)
+    console.log("Signup error", error);
     return {
       success: false,
       message: error?.message || "Internal Server Error",
@@ -62,14 +58,36 @@ export const handleSignup = async (body: handleSignupArgs) => {
   }
 };
 
-export const handleVerify = async(body:handleVerifyOtpArgs)=>{
+export const handleVerify = async (body: HandleVerifyOtpArgs) => {
   try {
-    console.log("body",body)
-    const res = await signIn("credentials",{...body,redirect:false})
-    console.log(res,"result")
-    return {success:true,message:"Verified Successfully"}
-    
-  } catch (error:any) {
-    return {success:false,message:error?.cause?.err?.message|| "Internal Server Error"}
+    const res = await api.post("/auth/verify-otp", body);
+
+    if (res.data?.statusCode === 200) {
+      return { success: true, message: "Verified Successfully" };
+    }
+
+    return {
+      success: false,
+      message: res.data?.message || "Verification failed",
+    };
+  } catch (error: any) {
+    console.log("Verify error", error);
+    return {
+      success: false,
+      message: error?.message || "Internal Server Error",
+    };
   }
-}
+};
+
+export const getUserClient = async () => {
+  try {
+    const res = await api.get("/auth/user");
+    return res.data;
+  } catch (error: any) {
+    console.log("GetUser error", error);
+    return {
+      success: false,
+      message: error?.message || "Internal Server Error",
+    };
+  }
+};
