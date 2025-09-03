@@ -1,5 +1,6 @@
 "use server";
 
+import { signIn } from "@/auth/auth";
 import api from "@/lib/axios";
 import { cookies } from "next/headers";
 
@@ -60,16 +61,9 @@ export const handleSignup = async (body: HandleSignupArgs) => {
 
 export const handleVerify = async (body: HandleVerifyOtpArgs) => {
   try {
-    const res = await api.post("/auth/verify-otp", body);
+    const res = await signIn("credentials",{...body,redirect:false})
 
-    if (res.data?.statusCode === 200) {
-      return { success: true, message: "Verified Successfully" };
-    }
-
-    return {
-      success: false,
-      message: res.data?.message || "Verification failed",
-    };
+    return {success:true,message:"Verified Successfully"}
   } catch (error: any) {
     console.log("Verify error", error);
     return {
