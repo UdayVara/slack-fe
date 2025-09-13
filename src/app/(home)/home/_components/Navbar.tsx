@@ -2,8 +2,8 @@ import React from 'react'
 
 function Navbar() {
   return (
-   <nav className='fixed top-0 w-full text-white bg-[#5c195e] text-center z-20'>
-    <h1 className="text-center my-2">Header</h1>
+   <nav className='sticky top-0 w-full text-white bg-primary-theme text-center z-20'>
+    <input type="text" placeholder='Search anything' className="py-1 text-xs  min-w-lg focus-visible:border-0 focus-visible:outline-0 rounded px-3 my-1 bg-[#8e398f]" />
    </nav>
   )
 }
