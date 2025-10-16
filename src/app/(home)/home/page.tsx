@@ -1,7 +1,7 @@
 import { auth } from "@/auth/auth"
 import { Metadata } from "next";
 import MiniSidebar from "./_components/MiniSidebar";
-import ChatSidebar from "./_components/ChatSidebar";
+import ChatSidebar from "./_components/ChatSidebar/ChatSidebar";
 
 export const metadata: Metadata = {
     title: "Home | Slack",
