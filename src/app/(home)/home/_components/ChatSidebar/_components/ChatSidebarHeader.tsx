@@ -13,19 +13,19 @@ import { ChevronDown, Settings, SquarePen } from "lucide-react";
 
 function ChatSidebarHeader() {
   return (
-    <div className="flex flex-row items-center justify-between pt-3">
-      <DropdownMenu>
-        <DropdownMenuTrigger className="flex flex-row items-center gap-2 cursor-pointer !border-none !outline-none !ring-0">
-          Demo Sample <ChevronDown className="ml-2" size={18} />
+    <div className="flex flex-row items-center justify-between pt-3 gap-x-10">
+      <DropdownMenu modal>
+        <DropdownMenuTrigger className="flex flex-row grow items-center gap-2 cursor-pointer !border-none !outline-none !ring-0 text-lg">
+          Demo Sample <ChevronDown className="ml-1" size={18} />
         </DropdownMenuTrigger>
-        <DropdownMenuContent>
+        <DropdownMenuContent className="bg-primary-theme-background min-w-[190px]">
           <DropdownMenuLabel>Demo Sample</DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <DropdownMenuItem>Prefernces</DropdownMenuItem>
-          <DropdownMenuItem>Tools & Settings</DropdownMenuItem>
-          <DropdownMenuItem>Subscription</DropdownMenuItem>
+          <DropdownMenuItem className="cursor-pointer focus:!bg-primary-theme/90 focus:!text-white">Prefernces</DropdownMenuItem>
+          <DropdownMenuItem className="cursor-pointer focus:!bg-primary-theme/90 focus:!text-white">Tools & Settings</DropdownMenuItem>
+          <DropdownMenuItem className="cursor-pointer focus:!bg-primary-theme/90 focus:!text-white">Subscription</DropdownMenuItem>
           <DropdownMenuSeparator />
-          <DropdownMenuItem>Signout</DropdownMenuItem>
+          <DropdownMenuItem className="cursor-pointer focus:!bg-primary-theme/90 focus:!text-white">Signout</DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
 

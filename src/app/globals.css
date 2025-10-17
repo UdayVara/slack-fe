@@ -11,7 +11,7 @@ html,body{
 
 
   --color-primary-theme:#5c195e;
-  
+  --color-primary-theme-background:#f2e6f2;
   --radius-sm: calc(var(--radius) - 4px);
 
   --radius-md: calc(var(--radius) - 2px);
