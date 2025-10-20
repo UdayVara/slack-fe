@@ -33,7 +33,7 @@ function MiniSidebar() {
         href="/home"
         className="flex flex-col items-center justify-center gap-0.5 cursor-pointer group rounded"
       >
-        <AiFillHome className="text-4xl py-1 px-2 rounded transition-transform duration-200 transform group-hover:scale-125 group-hover:bg-[#926093]" />
+        <AiFillHome className="text-4xl py-1 px-2 rounded transition-transform duration-200 transform group-hover:scale-110 group-hover:bg-[#926093]" />
         <span className="text-white text-xs">Home</span>
       </Link>
 
@@ -41,7 +41,7 @@ function MiniSidebar() {
         href="/direct-messages"
         className="flex flex-col items-center justify-center gap-0.5 cursor-pointer group rounded"
       >
-        <TbMessageCircle className="text-4xl py-1 px-2 rounded transition-transform duration-200  group-hover:bg-[#926093]" />
+        <TbMessageCircle className="text-4xl py-1 px-2 rounded transition-transform duration-200 transform group-hover:scale-110 group-hover:bg-[#926093]" />
         <span className="text-white text-xs">DMs</span>
       </Link>
 
@@ -49,7 +49,7 @@ function MiniSidebar() {
         href="/activity"
         className="flex flex-col items-center justify-center gap-0.5 cursor-pointer group s rounded"
       >
-        <IoNotifications className="text-4xl py-1 px-2 rounded transition-transform duration-200   group-hover:bg-[#926093]" />
+        <IoNotifications className="text-4xl py-1 px-2 rounded transition-transform duration-200 transform group-hover:scale-110 group-hover:bg-[#926093]" />
         <span className="text-white text-xs">Activity</span>
       </Link>
 
@@ -57,7 +57,7 @@ function MiniSidebar() {
         href="/files"
         className="flex flex-col items-center justify-center gap-0.5 cursor-pointer group rounded"
       >
-        <LuFiles className="text-4xl py-1 px-2 rounded transition-transform duration-200 group-hover:bg-[#926093]" />
+        <LuFiles className="text-4xl py-1 px-2 rounded transition-transform duration-200 transform group-hover:scale-110 group-hover:bg-[#926093]" />
         <span className="text-white text-xs">Files</span>
       </Link>
     </div>
