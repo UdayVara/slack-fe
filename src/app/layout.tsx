@@ -4,14 +4,13 @@ import "./globals.css";
 import NextAuthProvider from "@/providers/NextAuthProvider";
 import { auth } from "@/auth/auth";
 import { Toaster } from "@/components/ui/sonner";
+import ReactQueryProvider from "@/providers/QueryClientProviders";
 
 const lato = Lato({
   subsets: ["latin"],
-  weight: ["100", "300", "400", "700", "900"], 
-  variable: '--font-lato', 
+  weight: ["100", "300", "400", "700", "900"],
+  variable: "--font-lato",
 });
-
-
 
 export const metadata: Metadata = {
   title: "Slack",
@@ -23,16 +22,14 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const session = await auth()
+  const session = await auth();
   return (
     <html lang="en">
-      <body
-        className={`${lato.variable}  antialiased`}
-      >
+      <body className={`${lato.variable}  antialiased`}>
         <NextAuthProvider session={session}>
-        {children}
+          <ReactQueryProvider>{children}</ReactQueryProvider>
         </NextAuthProvider>
-        <Toaster position="top-right"/>
+        <Toaster position="top-right" />
       </body>
     </html>
   );
