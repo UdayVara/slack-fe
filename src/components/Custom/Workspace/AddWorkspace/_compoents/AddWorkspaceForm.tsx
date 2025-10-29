@@ -78,22 +78,22 @@ export default function MyForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 max-w-3xl mx-auto py-10">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-full mx-auto pt-3">
         
         <FormField
           control={form.control}
           name="workspace_name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Username</FormLabel>
+              <FormLabel>Workspace Name</FormLabel>
               <FormControl>
                 <Input 
-                placeholder="shadcn"
+                placeholder="Workspace Name"
                 
                 type=""
                 {...field} />
               </FormControl>
-              <FormDescription>This is your public display name.</FormDescription>
+              <FormDescription>Enter your workspace name.</FormDescription>
               <FormMessage />
             </FormItem>
           )}
