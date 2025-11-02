@@ -240,7 +240,7 @@ export const FileUploader = forwardRef<
           tabIndex={0}
           onKeyDownCapture={handleKeyDown}
           className={cn(
-            "grid w-full focus:outline-none overflow-hidden ",
+            "grid w-full opacity-100 dark:bg-transparent focus:outline-none overflow-hidden ",
             className,
             {
               "gap-2": value && value.length > 0,
@@ -335,8 +335,8 @@ export const FileInput = forwardRef<
     <div
       ref={ref}
       {...props}
-      className={`relative w-full ${
-        isLOF ? "opacity-50 cursor-not-allowed " : "cursor-pointer "
+      className={`relative p-0 m-0 dark:bg-neutral-900 w-full ${
+        isLOF ? "opacity-100 cursor-not-allowed " : "cursor-pointer "
       }`}
     >
       <div

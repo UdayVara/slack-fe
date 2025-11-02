@@ -12,7 +12,7 @@ export default async function Home () {
     console.log("user",user)
     return (
        
-        <div className="flex flex-col w-full h-full items-center justify-center text-2xl bg-white text-neutral-900 dark:bg-neutral-950/90 dark:text-neutral-200">
+        <div className="flex flex-col w-full h-full items-center justify-center text-2xl bg-neutral-100 text-neutral-900 dark:bg-neutral-800/70 dark:text-neutral-200">
             {user ? <h4>Hello {user?.user?.email}</h4> : <h4>User Not Logged In</h4>}
         </div>
     )

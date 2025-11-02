@@ -1,7 +1,8 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
+/* define the “dark” variant to work when .dark class is added */
+@custom-variant dark (&:where(.dark, .dark *));
 
 html,body{
   @apply  h-full w-full font-[var(--font-lato)];

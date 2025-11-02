@@ -44,11 +44,11 @@ import {
 } from "@/components/ui/FileUpload"
 
 const formSchema = z.object({
-  workspace_name: z.string().min(1),
-  workspace_image: z.string()
+  workspace_name: z.string().min(1,{message:"Workspace name is required"}),
+  workspace_image: z.string().min(1,{message:"Workspace image is required"})
 });
 
-export default function MyForm() {
+export default function MyForm() {      
 
   const [files, setFiles] = useState < File[] | null > (null);
 
@@ -59,7 +59,11 @@ export default function MyForm() {
   };
   const form = useForm < z.infer < typeof formSchema >> ({
     resolver: zodResolver(formSchema),
-
+    defaultValues: {
+      workspace_name: "",
+      workspace_image: "",
+    },
+    mode:"onChange"
   })
 
   function onSubmit(values: z.infer < typeof formSchema > ) {
@@ -94,7 +98,7 @@ export default function MyForm() {
                 {...field} />
               </FormControl>
               <FormDescription>Enter your workspace name.</FormDescription>
-              <FormMessage />
+              <FormMessage/>
             </FormItem>
           )}
         />
@@ -144,7 +148,7 @@ export default function MyForm() {
                 </FormItem>
               )}
             />
-        <Button type="submit">Submit</Button>
+        <Button className="cursor-pointer" type="submit">Submit</Button>
       </form>
     </Form>
   )
