@@ -9,7 +9,7 @@
       const [queryClient] = useState(() => new QueryClient({
         defaultOptions: {
           queries: {
-            staleTime: 60 * 1000, // Example: data remains fresh for 1 minute
+            staleTime: 60 * 1000, 
           },
         },
       }));

@@ -14,7 +14,7 @@ import { toast } from "sonner";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import ButtonLoader from "@/components/Loaders/ButtonLoader/ButtonLoader";
+import ButtonLoader from "@/components/Common/Loaders/ButtonLoader/ButtonLoader";
 import { useRouter } from "next/navigation";
 
 const signupSchema = z.object({

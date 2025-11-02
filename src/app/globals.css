@@ -4,7 +4,7 @@
 @custom-variant dark (&:is(.dark *));
 
 html,body{
-  @apply  h-full w-full;
+  @apply  h-full w-full font-[var(--font-lato)];
 }
 
 @theme inline {

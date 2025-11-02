@@ -5,6 +5,7 @@ import NextAuthProvider from "@/providers/NextAuthProvider";
 import { auth } from "@/auth/auth";
 import { Toaster } from "@/components/ui/sonner";
 import ReactQueryProvider from "@/providers/QueryClientProviders";
+import { ThemeProvider } from "next-themes";
 
 const lato = Lato({
   subsets: ["latin"],
@@ -26,10 +27,13 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={`${lato.variable}  antialiased`}>
+        <ThemeProvider defaultTheme="system" attribute="class">
+
         <NextAuthProvider session={session}>
           <ReactQueryProvider>{children}</ReactQueryProvider>
         </NextAuthProvider>
         <Toaster position="top-right" />
+        </ThemeProvider>
       </body>
     </html>
   );

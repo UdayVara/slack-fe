@@ -12,10 +12,11 @@ import { LuFiles } from "react-icons/lu";
 import { TbMessageCircle } from "react-icons/tb";
 import { GoPlusCircle } from "react-icons/go";
 import AddWorkspaceDialog from "@/components/Custom/Workspace/AddWorkspace/AddWorkspaceDialog";
+import ThemeToggler from "@/components/Common/ThemeToggler/ThemeToggler";
 
 function MiniSidebar() {
   return (
-    <div className="h-full text-neutral-200 bg-primary-theme w-[68px] max-h-full overflow-y-auto border-r border-r-[#5e285f] flex flex-col items-center gap-4 shadow pt-1">
+    <div className="h-full text-neutral-200 bg-primary-theme w-[68px] max-h-full overflow-y-auto border-r border-r-[#5e285f] flex flex-col items-center gap-4 shadow pt-1 relative">
       <HoverCard key={"workspace-ds"}>
         <HoverCardTrigger>
           <Avatar className="cursor-pointer">
@@ -79,6 +80,11 @@ function MiniSidebar() {
         <LuFiles className="text-4xl py-1 px-2 rounded transition-transform duration-200 transform group-hover:scale-110 group-hover:bg-[#926093]" />
         <span className="text-white text-xs">Files</span>
       </Link>
+
+      <div className="absolute bottom-4 text-neutral-300">
+       <ThemeToggler/>
+        
+      </div>
     </div>
   );
 }
