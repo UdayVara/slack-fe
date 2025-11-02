@@ -23,6 +23,7 @@ api.interceptors.request.use(
     } else {
       if(typeof localStorage !== 'undefined'){
         const user:any = await getUserClient()
+        console.log(user)
         access_token = user?.token || ''
       }
     }

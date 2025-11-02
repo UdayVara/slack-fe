@@ -1,5 +1,5 @@
 "use client"
-import React from 'react'
+import React,{useState} from 'react'
 import {
   Dialog,
   DialogContent,
@@ -16,15 +16,16 @@ type addDialogProps = {
     triggerContent?:React.ReactNode
 }
 function AddWorkspaceDialog({handleClose,handleOpen,triggerContent}:addDialogProps) {
+  const [open,setOpen] = useState(false)
   return (
-    <Dialog onOpenChange={(open)=>{
+    <Dialog open={open} onOpenChange={(open)=>{
         if(open){
             if(handleOpen) handleOpen()
         }else{
             if(handleClose) handleClose()
         }
     }}>
-      <DialogTrigger className='w-full'>{triggerContent}</DialogTrigger>
+      <DialogTrigger className='w-full' onClick={()=>setOpen(true)}>{triggerContent}</DialogTrigger>
   <DialogContent>
     <DialogHeader>
       <DialogTitle>Create Workspace</DialogTitle>
@@ -32,7 +33,7 @@ function AddWorkspaceDialog({handleClose,handleOpen,triggerContent}:addDialogPro
        Create a new workspace to start collaborating with your team.
       </DialogDescription>
     </DialogHeader>
-    <AddWorkspaceForm/>
+    <AddWorkspaceForm handleClose={()=>{setOpen(false);}}/>
   </DialogContent>
 </Dialog>
   )

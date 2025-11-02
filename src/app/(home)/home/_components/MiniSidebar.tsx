@@ -17,7 +17,7 @@ import ThemeToggler from "@/components/Common/ThemeToggler/ThemeToggler";
 function MiniSidebar() {
   return (
     <div className="h-full text-neutral-200 bg-primary-theme w-[68px] max-h-full overflow-y-auto border-r border-r-[#5e285f] flex flex-col items-center gap-4 shadow pt-1 relative">
-      <HoverCard key={"workspace-ds"}>
+      <HoverCard  key={"workspace-ds"}>
         <HoverCardTrigger>
           <Avatar className="cursor-pointer dark:bg-neutral-800/80 dark:text-neutral-200">
             <AvatarImage src="D" />

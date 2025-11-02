@@ -1,6 +1,6 @@
 "use server";
 
-import { signIn } from "@/auth/auth";
+import { auth, signIn } from "@/auth/auth";
 import api from "@/lib/axios";
 import { cookies } from "next/headers";
 
@@ -75,8 +75,8 @@ export const handleVerify = async (body: HandleVerifyOtpArgs) => {
 
 export const getUserClient = async () => {
   try {
-    const res = await api.get("/auth/user");
-    return res.data;
+    const res = await auth();
+    return res?.user;
   } catch (error: any) {
     console.log("GetUser error", error);
     return {
