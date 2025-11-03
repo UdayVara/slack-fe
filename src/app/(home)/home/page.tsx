@@ -1,6 +1,6 @@
 import { auth } from "@/auth/auth"
 import { Metadata } from "next";
-import MiniSidebar from "./_components/MiniSidebar";
+import MiniSidebar from "./_components/MiniSidebar/MiniSidebar";
 import ChatSidebar from "./_components/ChatSidebar/ChatSidebar";
 
 export const metadata: Metadata = {

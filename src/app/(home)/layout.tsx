@@ -1,5 +1,5 @@
 import React from 'react'
-import MiniSidebar from './home/_components/MiniSidebar'
+import MiniSidebar from './home/_components/MiniSidebar/MiniSidebar'
 import ChatSidebar from './home/_components/ChatSidebar/ChatSidebar'
 import Navbar from './home/_components/Navbar'
 

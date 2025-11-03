@@ -1,5 +1,5 @@
 // hooks/useCreateWorkspace.ts
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import api from "@/lib/axios"; // your shared axios file
 
 const createWorkspace = async (formData: FormData) => {
@@ -13,5 +13,15 @@ const createWorkspace = async (formData: FormData) => {
 export const useCreateWorkspace = () => {
   return useMutation({
     mutationFn: createWorkspace,
+  });
+};
+
+export const useGetWorkspaces = () => {
+  return useQuery({
+    queryKey: ["workspaces"],
+    queryFn: async () => {
+      const response = await api.get("/workspace");
+      return response.data.data;
+    },
   });
 };

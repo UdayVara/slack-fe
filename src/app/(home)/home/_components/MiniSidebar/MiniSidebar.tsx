@@ -13,41 +13,12 @@ import { TbMessageCircle } from "react-icons/tb";
 import { GoPlusCircle } from "react-icons/go";
 import AddWorkspaceDialog from "@/components/Custom/Workspace/AddWorkspace/AddWorkspaceDialog";
 import ThemeToggler from "@/components/Common/ThemeToggler/ThemeToggler";
+import WorkspaceList from "./_components/WorkspaceList";
 
 function MiniSidebar() {
   return (
     <div className="h-full text-neutral-200 bg-primary-theme w-[68px] max-h-full overflow-y-auto border-r border-r-[#5e285f] flex flex-col items-center gap-4 shadow pt-1 relative">
-      <HoverCard  key={"workspace-ds"}>
-        <HoverCardTrigger>
-          <Avatar className="cursor-pointer dark:bg-neutral-800/80 dark:text-neutral-200">
-            <AvatarImage src="D" />
-            <AvatarFallback>DS</AvatarFallback>
-          </Avatar>
-        </HoverCardTrigger>
-        <HoverCardContent
-          side="right"
-          align="end"
-          alignOffset={100}
-          sideOffset={2}
-          className="bg-neutral-200 ml-4  p-0 text-black dark:bg-neutral-800  dark:text-neutral-200"
-        >
-          <div className="py-2 px-2 cursor-pointer hover:bg-neutral-300 dark:hover:bg-neutral-700  w-full">
-            <h5>Demo Sample</h5>
-            <p className=" text-neutral-700 dark:text-neutral-300 text-sm">demosample.slack.com</p>
-          </div>
-
-          <AddWorkspaceDialog
-            triggerContent={
-              <div className="py-2 px-2 cursor-pointer hover:bg-neutral-300 dark:hover:bg-neutral-700  w-full">
-                <h5 className="flex flex-row  items-center gap-2">
-                  {" "}
-                  <GoPlusCircle /> Create Workspace
-                </h5>
-              </div>
-            }
-          />
-        </HoverCardContent>
-      </HoverCard>
+     <WorkspaceList/>
 
       <Link
         href="/home"

@@ -43,6 +43,7 @@ export default function MyForm({handleClose}:any) {
         toast.success("Workspace created!");
         form.reset();
         setFiles(null);
+        
         handleClose()
       },
       onError: (err: any) => {

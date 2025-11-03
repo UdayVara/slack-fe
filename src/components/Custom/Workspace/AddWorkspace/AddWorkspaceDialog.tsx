@@ -11,21 +11,15 @@ import {
 import AddWorkspaceForm from './_compoents/AddWorkspaceForm'
 
 type addDialogProps = {
-    handleClose?:()=>void,
-    handleOpen?:()=>void,
+    open:boolean,
+    setOpen:React.Dispatch<React.SetStateAction<boolean>>,
+    onCreateWorkspace?:()=>void,
     triggerContent?:React.ReactNode
 }
-function AddWorkspaceDialog({handleClose,handleOpen,triggerContent}:addDialogProps) {
-  const [open,setOpen] = useState(false)
+function AddWorkspaceDialog({open,setOpen,onCreateWorkspace,triggerContent}:addDialogProps) {
   return (
-    <Dialog open={open} onOpenChange={(open)=>{
-        if(open){
-            if(handleOpen) handleOpen()
-        }else{
-            if(handleClose) handleClose()
-        }
-    }}>
-      <DialogTrigger className='w-full' onClick={()=>setOpen(true)}>{triggerContent}</DialogTrigger>
+    <Dialog open={open} onOpenChange={setOpen}>
+        <>{triggerContent}</>
   <DialogContent>
     <DialogHeader>
       <DialogTitle>Create Workspace</DialogTitle>
@@ -33,7 +27,7 @@ function AddWorkspaceDialog({handleClose,handleOpen,triggerContent}:addDialogPro
        Create a new workspace to start collaborating with your team.
       </DialogDescription>
     </DialogHeader>
-    <AddWorkspaceForm handleClose={()=>{setOpen(false);}}/>
+    <AddWorkspaceForm handleClose={()=>{setOpen(false);onCreateWorkspace?.();}}/>
   </DialogContent>
 </Dialog>
   )
