@@ -16,7 +16,7 @@ function WorkspaceItem({ workspace }: WorkspaceItemProps) {
          <HoverCard open={cardOpen} onOpenChange={setCardOpen} key={"workspace-ds"}>
         <HoverCardTrigger>
           <Avatar className="cursor-pointer rounded-full dark:bg-neutral-800/80 dark:text-neutral-200">
-            <AvatarImage className='rounded-full h-14 w-14' src={workspace?.workspace?.workspaceImage} />
+            <AvatarImage className='rounded-full h-12 w-12 object-cover object-center' src={workspace?.workspace?.workspaceImage} />
             <AvatarFallback>DS</AvatarFallback>
           </Avatar>
         </HoverCardTrigger>
