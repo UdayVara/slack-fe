@@ -18,7 +18,7 @@ import WorkspaceList from "./_components/WorkspaceList";
 function MiniSidebar() {
   return (
     <div className="h-full text-neutral-200 bg-primary-theme w-[68px] max-h-full overflow-y-auto border-r border-r-[#5e285f] flex flex-col items-center gap-4 shadow pt-1 relative">
-     <WorkspaceList/>
+     <WorkspaceList />
 
       <Link
         href="/home"
