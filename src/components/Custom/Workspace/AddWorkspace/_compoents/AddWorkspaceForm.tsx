@@ -23,6 +23,9 @@ export default function MyForm({handleClose}:any) {
     maxFiles: 1,
     maxSize: 1024 * 1024 * 4,
     multiple: false,
+    accept: {
+      "image/*": [".png", ".jpg", ".jpeg", ".webp"],
+    },
   };
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -79,6 +82,7 @@ export default function MyForm({handleClose}:any) {
               <FormControl>
                 <FileUploader
                   value={files}
+                
                   onValueChange={(f) => {
                     setFiles(f);
                     form.setValue("workspace_image", f);
