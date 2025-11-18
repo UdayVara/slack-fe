@@ -10,6 +10,7 @@ import { Input } from "@/components/ui/input"
 import { CloudUpload, Paperclip, Loader2 } from "lucide-react"
 import { FileInput, FileUploader, FileUploaderContent, FileUploaderItem } from "@/components/ui/FileUpload"
 import { useCreateWorkspace } from "@/api/workspace.query";
+import { useQueryClient } from "@tanstack/react-query";
 
 const formSchema = z.object({
   workspace_name: z.string().min(1, { message: "Workspace name is required" }),
@@ -18,7 +19,7 @@ const formSchema = z.object({
 
 export default function MyForm({handleClose}:any) {
   const [files, setFiles] = useState<File[] | null>(null);
-
+  const queryClient = useQueryClient()
   const dropZoneConfig = {
     maxFiles: 1,
     maxSize: 1024 * 1024 * 4,
@@ -46,7 +47,9 @@ export default function MyForm({handleClose}:any) {
         toast.success("Workspace created!");
         form.reset();
         setFiles(null);
-        
+        queryClient.refetchQueries({
+          queryKey:["workspaces"]
+        })
         handleClose()
       },
       onError: (err: any) => {
