@@ -5,7 +5,8 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 html,body{
-  @apply  h-full w-full font-[var(--font-lato)];
+  @apply  h-full w-full;
+  font-family: var(--font-lato);
 }
 
 @theme inline {
@@ -153,6 +154,8 @@ html,body{
   --sidebar-ring: oklch(0.708 0 0);
 
   --theme: #611f69;
+
+
 }
 
 .dark {

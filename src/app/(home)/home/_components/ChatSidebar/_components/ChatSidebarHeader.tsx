@@ -18,14 +18,14 @@ function ChatSidebarHeader() {
         <DropdownMenuTrigger className="flex flex-row grow items-center gap-2 cursor-pointer !border-none !outline-none !ring-0 text-lg">
           Demo Sample <ChevronDown className="ml-1" size={18} />
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="bg-primary-theme-background min-w-[190px]">
+        <DropdownMenuContent className="bg-primary-theme-background dark:bg-neutral-800 min-w-[190px]">
           <DropdownMenuLabel>Demo Sample</DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <DropdownMenuItem className="cursor-pointer focus:!bg-primary-theme/90 focus:!text-white">Prefernces</DropdownMenuItem>
-          <DropdownMenuItem className="cursor-pointer focus:!bg-primary-theme/90 focus:!text-white">Tools & Settings</DropdownMenuItem>
-          <DropdownMenuItem className="cursor-pointer focus:!bg-primary-theme/90 focus:!text-white">Subscription</DropdownMenuItem>
+          <DropdownMenuItem className="cursor-pointer focus:!bg-primary-theme/90 dark:focus:bg-primary-theme focus:!text-white">Prefernces</DropdownMenuItem>
+          <DropdownMenuItem className="cursor-pointer focus:!bg-primary-theme/90 dark:focus:bg-primary-theme focus:!text-white">Tools & Settings</DropdownMenuItem>
+          <DropdownMenuItem className="cursor-pointer focus:!bg-primary-theme/90 dark:focus:bg-primary-theme focus:!text-white">Subscription</DropdownMenuItem>
           <DropdownMenuSeparator />
-          <DropdownMenuItem className="cursor-pointer focus:!bg-primary-theme/90 focus:!text-white">Signout</DropdownMenuItem>
+          <DropdownMenuItem className="cursor-pointer focus:!bg-primary-theme/90 dark:focus:bg-primary-theme focus:!text-white">Signout</DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
 
